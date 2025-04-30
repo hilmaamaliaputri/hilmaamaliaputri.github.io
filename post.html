@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasi Goreng Spesial ala Chef HAP - Cooking with HAP</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #800000;
+            --light-pink: #f5e8e8;
+            --dark-text: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            background-color: #f9f9f9;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--dark-text) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .hero-section {
+            background-color: var(--light-pink);
+            padding: 60px 0;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .recipe-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .recipe-meta {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .recipe-meta i {
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+        
+        .ingredient-list li, .instruction-list li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .ingredient-list {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        
+        .ingredient-list li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .instruction-list li {
+            padding-left: 10px;
+        }
+        
+        .chef-quote {
+            font-style: italic;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        
+        .food-image {
+            height: 550px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--dark-text);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--light-pink);
+        }
+        
+        .rating {
+            color: #ffc107;
+        }
+        
+        .comment-box {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .rounded-circle {
+            width: 200px;
+
+        }
+
+        .rounded {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Cooking with HAP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Resep</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tips Memasak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tentang Chef HAP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Nasi Goreng Spesial ala Chef HAP</h1>
+                    <p class="lead mb-4">Perpaduan cita rasa autentik Indonesia dengan sentuhan kreatif modern yang membuat lidah bergoyang!</p>
+                    <div class="recipe-meta mb-4">
+                        <span class="me-3"><i class="fas fa-clock"></i> Waktu Persiapan: 15 menit</span>
+                        <span class="me-3"><i class="fas fa-fire"></i> Waktu Memasak: 20 menit</span>
+                        <span><i class="fas fa-users"></i> Porsi: 4 orang</span>
+                    </div>
+                    <div class="mb-4">
+                        <span class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="ms-2">(4.8/5 dari 256 ulasan)</span>
+                    </div>
+                    <a href="#resep" class="btn btn-primary btn-lg me-2">Lihat Resep</a>
+                    <a href="#" class="btn btn-outline-primary btn-lg">Simpan Resep</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/nasgor.jpg" alt="Nasi Goreng Spesial" class="img-fluid rounded-3 food-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <section class="py-5" id="resep">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <article>
+                        <h2 class="mb-4">Rahasia di Balik Nasi Goreng Spesial Chef HAP</h2>
+                        
+                        <p>Tidak ada yang lebih ikonik dari kuliner Indonesia selain nasi goreng. Hidangan sederhana namun penuh cita rasa ini telah menjadi kebanggaan nasional yang diakui dunia. Di tangan Chef HAP, nasi goreng bertransformasi menjadi hidangan spektakuler yang memadukan resep tradisional dengan sentuhan kreatif modern.</p>
+                        
+                        <p>Chef HAP, atau Haryo Adi Pramono, telah menghabiskan lebih dari 15 tahun eksplorasi kuliner di berbagai penjuru Indonesia sebelum menciptakan resep nasi goreng spesial yang kini menjadi signature dish-nya. Perjalanan kulinernya dimulai dari jalan-jalan sempit di Yogyakarta hingga dapur restoran bintang 5 di Jakarta, membuat setiap suapan nasi goreng kreasinya menceritakan kisah perjalanan panjang tersebut.</p>
+                        
+                        <div class="chef-quote">
+                            "Nasi goreng bukanlah sekadar hidangan sederhana. Ia adalah kanvas bagi para koki untuk mengekspresikan kreativitas dan menunjukkan keahlian mereka dalam menyeimbangkan berbagai rasa. Rahasianya terletak pada kualitas bahan dan teknik yang tepat." - Chef HAP
+                        </div>
+                        
+                        <h3 class="mt-5 mb-4">Bahan-bahan</h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Bahan Utama:</h5>
+                                <ul class="ingredient-list">
+                                    <li>4 piring nasi putih dingin (dimasak sehari sebelumnya untuk hasil terbaik)</li>
+                                    <li>250 gram daging ayam fillet, potong dadu kecil</li>
+                                    <li>150 gram udang segar, kupas dan bersihkan</li>
+                                    <li>3 butir telur ayam kampung</li>
+                                    <li>100 gram kacang polong</li>
+                                    <li>2 batang daun bawang, iris halus</li>
+                                    <li>5 siung bawang putih, cincang halus</li>
+                                    <li>8 butir bawang merah, iris tipis</li>
+                                    <li>3 buah cabai merah keriting, iris serong</li>
+                                    <li>5 buah cabai rawit (sesuaikan dengan selera)</li>
+                                    <li>2 sdm kecap manis khas Jawa</li>
+                                    <li>1 sdm saus tiram premium</li>
+                                    <li>1 sdt garam laut</li>
+                                    <li>1/2 sdt merica bubuk</li>
+                                    <li>3 sdm minyak zaitun extra virgin</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Bumbu Halus:</h5>
+                                <ul class="ingredient-list">
+                                    <li>5 buah cabai merah besar, buang bijinya</li>
+                                    <li>3 siung bawang putih</li>
+                                    <li>5 butir bawang merah</li>
+                                    <li>2 cm kunyit bakar</li>
+                                    <li>3 butir kemiri sangrai</li>
+                                    <li>1 sdm terasi bakar</li>
+                                    <li>1 ruas lengkuas muda</li>
+                                </ul>
+                                
+                                <h5 class="mt-4">Pelengkap:</h5>
+                                <ul class="ingredient-list">
+                                    <li>Telur mata sapi</li>
+                                    <li>Kerupuk udang</li>
+                                    <li>Acar mentimun dan wortel</li>
+                                    <li>Bawang goreng</li>
+                                    <li>Irisan tomat dan mentimun segar</li>
+                                    <li>Daun kemangi segar</li>
+                                    <li>Emping melinjo</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h3 class="mt-5 mb-4">Cara Pembuatan</h3>
+                        
+                        <ol class="instruction-list">
+                            <li>
+                                <strong>Persiapan Bahan:</strong> Pastikan semua bahan sudah disiapkan dan dipotong sesuai petunjuk. Penting untuk menggunakan nasi yang sudah didinginkan minimal 5-6 jam untuk mendapatkan tekstur nasi goreng yang tidak lengket.
+                            </li>
+                            <li>
+                                <strong>Membuat Bumbu Halus:</strong> Haluskan semua bahan bumbu halus menggunakan blender atau ulekan tradisional. Chef HAP lebih menyarankan penggunaan ulekan untuk menghasilkan aroma dan tekstur bumbu yang lebih otentik.
+                            </li>
+                            <li>
+                                <strong>Tumis Bumbu:</strong> Panaskan minyak zaitun dalam wajan anti lengket dengan api sedang. Tumis bawang putih cincang hingga harum, lalu masukkan bawang merah iris dan tumis hingga layu dan wangi.
+                            </li>
+                            <li>
+                                <strong>Tambahkan Bumbu Halus:</strong> Masukkan bumbu halus ke dalam tumisan, aduk rata dan masak hingga benar-benar matang dan aroma harum menyeruak (sekitar 3-5 menit). Bumbu yang tidak matang sempurna akan memberikan after taste pahit pada nasi goreng.
+                            </li>
+                            <li>
+                                <strong>Masak Protein:</strong> Tambahkan potongan ayam ke dalam tumisan bumbu, masak hingga berubah warna. Kemudian masukkan udang dan masak hingga berubah warna menjadi kemerahan.
+                            </li>
+                            <li>
+                                <strong>Teknik Telur Orak-Arik Khas Chef HAP:</strong> Geser tumisan ke satu sisi wajan, tambahkan sedikit minyak di sisi kosong, lalu pecahkan telur. Biarkan telur setengah matang, lalu orak-arik cepat dan aduk dengan tumisan bumbu dan protein.
+                            </li>
+                            <li>
+                                <strong>Masukkan Nasi:</strong> Tambahkan nasi dingin sedikit demi sedikit sambil diaduk rata dengan bumbu. Pastikan api dalam kondisi besar agar nasi tidak menggumpal. Aduk dengan gerakan membalik secara konstan.
+                            </li>
+                            <li>
+                                <strong>Penambahan Bumbu Penyedap:</strong> Tambahkan kecap manis, saus tiram, garam, dan merica. Aduk rata hingga semua nasi terbalut bumbu secara merata dan berwarna kecokelatan appetizing.
+                            </li>
+                            <li>
+                                <strong>Sentuhan Terakhir:</strong> Masukkan kacang polong dan irisan cabai, aduk sebentar. Matikan api, lalu tambahkan daun bawang iris. Aduk cepat untuk mempertahankan kesegaran dan warna hijau daun bawang.
+                            </li>
+                            <li>
+                                <strong>Plating ala Chef HAP:</strong> Tata nasi goreng di piring saji dengan bantuan cetakan ring. Tambahkan telur mata sapi di atasnya. Susun acar, kerupuk udang, emping, dan irisan sayuran segar di sekitar nasi goreng. Taburi bawang goreng dan daun kemangi sebagai sentuhan akhir.
+                            </li>
+                        </ol>
+                        
+                        
+                        <h3 class="mt-5 mb-4">Tips Khusus dari Chef HAP</h3>
+                        
+                        <ul class="ingredient-list">
+                            <li><strong>Rahasia Nasi Sempurna:</strong> Gunakan nasi yang dimasak dengan sedikit minyak dan didinginkan semalaman di kulkas. Tekstur nasi akan lebih pera dan tidak mudah hancur saat digoreng.</li>
+                            <li><strong>Penggunaan Api:</strong> Selalu gunakan api besar saat menggoreng nasi untuk mendapatkan "wok hei" atau aroma khas nasi goreng yang dimasak dengan api besar dan cepat.</li>
+                            <li><strong>Rahasia Wangi:</strong> Tambahkan 1 sdm minyak wijen saat tahap akhir memasak untuk aroma yang lebih menggugah selera.</li>
+                            <li><strong>Pilihan Protein:</strong> Jangan takut bereksperimen dengan protein lain seperti daging sapi iris tipis, cumi-cumi, atau bakso ikan untuk variasi rasa.</li>
+                            <li><strong>Sentuhan Asam:</strong> Sedikit perasan jeruk nipis sebelum penyajian akan memberikan dimensi rasa baru yang menyegarkan.</li>
+                        </ul>
+                        
+                        <div class="chef-quote">
+                            "Nasi goreng adalah hidangan yang sangat personal. Setiap keluarga memiliki resep rahasianya sendiri. Resep yang saya bagikan ini adalah perjalanan kuliner saya selama belasan tahun, tetapi jangan ragu untuk menyesuaikannya dengan preferensi Anda sendiri. Itulah keindahan memasak." - Chef HAP
+                        </div>
+                        
+                        <h3 class="mt-5 mb-4">Nilai Gizi (Per Porsi)</h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="ingredient-list">
+                                    <li>Kalori: 450 kkal</li>
+                                    <li>Protein: 22g</li>
+                                    <li>Karbohidrat: 65g</li>
+                                    <li>Lemak: 11g</li>
+                                    <li>Serat: 3g</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="ingredient-list">
+                                    <li>Natrium: 680mg</li>
+                                    <li>Kalium: 320mg</li>
+                                    <li>Kalsium: 85mg</li>
+                                    <li>Zat Besi: 2.5mg</li>
+                                    <li>Vitamin A dan C</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h3 class="mt-5 mb-4">Variasi Nasi Goreng</h3>
+                        
+                        <p>Chef HAP juga memiliki beberapa variasi nasi goreng spesial yang tidak kalah lezatnya:</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card recipe-card h-100">
+                                    <img src="img/nasgor kambing.jpg" class="card-img-top" alt="Nasi Goreng Kambing">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nasi Goreng Kambing</h5>
+                                        <p class="card-text">Perpaduan daging kambing empuk dengan rempah khas Timur Tengah yang memberikan aroma dan rasa yang kaya.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card recipe-card h-100">
+                                    <img src="img/nasgor ijo.jpg" class="card-img-top" alt="Nasi Goreng Hijau">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nasi Goreng Hijau</h5>
+                                        <p class="card-text">Inovasi nasi goreng dengan pasta bumbu hijau dari daun kemangi, daun jeruk, dan cabai hijau yang segar dan aromatic.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="mt-5 mb-4">Sejarah dan Filosofi Nasi Goreng Indonesia</h3>
+                        
+                        <p>Nasi goreng memiliki sejarah panjang dalam kuliner Nusantara. Konon, hidangan ini bermula dari kebiasaan masyarakat Indonesia yang tidak menyukai pemborosan, sehingga nasi sisa dari hari sebelumnya diolah kembali dengan bumbu-bumbu untuk menciptakan hidangan baru yang lezat.</p>
+                        
+                        <p>Setiap daerah di Indonesia memiliki versi nasi goreng yang unik. Di Jawa, nasi goreng cenderung manis karena penggunaan kecap manis. Di Sumatra, nasi goreng lebih pedas dan berbumbu. Di Sulawesi, nasi goreng sering dimasak dengan seafood segar. Chef HAP mengambil inspirasi dari berbagai versi regional ini dan menciptakan resep yang menjembatani berbagai cita rasa Nusantara.</p>
+                        
+                        <p>Bagi Chef HAP, nasi goreng bukan sekadar makanan, tetapi representasi dari filosofi hidup orang Indonesia: sederhana namun kaya makna, beragam namun harmonis, dan selalu bisa beradaptasi dengan berbagai situasi.</p>
+                       
+                        <div class="mt-5 pt-3 border-top">
+                            <h4>Komentar (18)</h4>
+                            
+                            <div class="comment-box mt-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/dian sastro.jpg" class="rounded-circle me-3" alt="User Avatar">
+                                    <div>
+                                        <h6 class="mb-0">Dian Sastro</h6>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>Resep ini luar biasa! Saya mencobanya kemarin malam untuk makan malam keluarga dan semuanya terpukau. Tips menggunakan nasi dingin benar-benar mengubah tekstur nasi goreng saya. Terima kasih Chef HAP!</p>
+                            </div>
+                            
+                            <div class="comment-box">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="img/budi santoso.jpg" class="rounded-circle me-3" alt="User Avatar">
+                                    <div>
+                                        <h6 class="mb-0">Budi Santoso</h6>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>Bumbu halusnya memang mantap, tapi bagi saya terlalu pedas. Mungkin kali berikutnya akan saya kurangi cabainya. Tapi overall, ini resep nasi goreng terbaik yang pernah saya coba!</p>
+                            </div>
+                            
+                            <a href="#" class="btn btn-outline-primary mt-3">Lihat Semua Komentar</a>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card mb-4 recipe-card">
+                        <div class="card-body">
+                            <h4 class="card-title">Tentang Chef HAP</h4>
+                            <img src="img/hap.jpg" class="rounded-circle mx-auto d-block my-3" alt="Chef HAP">
+                            <p class="card-text">Haryo Adi Pramono (HAP) adalah seorang chef profesional dengan pengalaman lebih dari 15 tahun di industri kuliner. Spesialisasinya adalah menggabungkan teknik memasak modern dengan resep tradisional Indonesia.</p>
+                            <a href="#" class="btn btn-outline-primary w-100">Profil Lengkap</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4 recipe-card">
+                        <div class="card-body">
+                            <h4 class="card-title">Resep Populer Lainnya</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center p-3">
+                                    <img src="img/rendang.jpg" class="rounded me-3" alt="Rendang">
+                                    <div>
+                                        <h6 class="mb-1">Rendang Sapi Premium</h6>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center p-3">
+                                    <img src="img/soto ayam.jpg" class="rounded me-3" alt="Soto Ayam">
+                                    <div>
+                                        <h6 class="mb-1">Soto Ayam Kampung</h6>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center p-3">
+                                    <img src="img/ayam betutu.jpg" class="rounded me-3" alt="Ayam Betutu">
+                                    <div>
+                                        <h6 class="mb-1">Ayam Betutu Bali</h6>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4 recipe-card">
+                        <div class="card-body">
+                            <h4 class="card-title">Langganan Newsletter</h4>
+                            <p class="card-text">Dapatkan resep eksklusif dan tips memasak langsung dari Chef HAP setiap minggu.</p>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Email Anda">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Berlangganan</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Kontainer untuk Tag Populer -->
+<div class="card mb-4 rounded-3">
+    <div class="card-body">
+        <h4 class="card-title h5 mb-3">Tag Populer</h4>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="#" class="text-decoration-none">
+                <span class="badge bg-light text-dark p-2">#N</span>
+            </a>
+            <a href="#" class="text-decoration-none">
+                <span class="badge bg-light text-dark p-2">#enak</span>
+            </a>
+            <!-- Tambahkan tag lainnya sesuai kebutuhan -->
+            <a href="#" class="text-decoration-none">
+                <span class="badge bg-light text-dark p-2">#resep</span>
+            </a>
+            <a href="#" class="text-decoration-none">
+                <span class="badge bg-light text-dark p-2">#masakan</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Kontainer untuk Bagikan Artikel -->
+<div class="card mb-4 rounded-3">
+    <div class="card-body">
+        <h4 class="text-center mb-3" style="font-size: 0.9rem; color: #666; font-weight: 600;">BAGIKAN ARTIKEL INI:</h4>
+        <div class="d-flex justify-content-center gap-2">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=[URL_ARTIKEL]" target="_blank" class="btn btn-sm" style="background-color: #3b5998; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=[URL_ARTIKEL]&text=[JUDUL_ARTIKEL]" target="_blank" class="btn btn-sm" style="background-color: #1DA1F2; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://wa.me/?text=[JUDUL_ARTIKEL] [URL_ARTIKEL]" target="_blank" class="btn btn-sm" style="background-color: #25D366; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://t.me/share/url?url=[URL_ARTIKEL]&text=[JUDUL_ARTIKEL]" target="_blank" class="btn btn-sm" style="background-color: #0088cc; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+            <a href="mailto:?subject=[JUDUL_ARTIKEL]&body=Lihat artikel ini: [JUDUL_ARTIKEL] [URL_ARTIKEL]" class="btn btn-sm" style="background-color: #EA4335; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <button class="btn btn-sm" style="background-color: #333; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" onclick="copyArticleLink()">
+                <i class="fas fa-link"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Script untuk fungsi salin link -->
+<script>
+function copyArticleLink() {
+    // Membuat elemen temporer untuk menyalin URL
+    var tempInput = document.createElement("input");
+    tempInput.value = window.location.href;
+    document.body.appendChild(tempInput);
+    
+    // Memilih dan menyalin URL
+    tempInput.select();
+    document.execCommand("copy");
+    
+    // Menghapus elemen temporer
+    document.body.removeChild(tempInput);
+    
+    // Menampilkan notifikasi kecil
+    var toast = document.createElement('div');
+    toast.style.position = 'fixed';
+    toast.style.bottom = '20px';
+    toast.style.right = '20px';
+    toast.style.backgroundColor = 'rgba(0,0,0,0.7)';
+    toast.style.color = 'white';
+    toast.style.padding = '10px 15px';
+    toast.style.borderRadius = '4px';
+    toast.style.fontSize = '14px';
+    toast.style.zIndex = '9999';
+    toast.innerHTML = '<i class="fas fa-check-circle me-2"></i>Link berhasil disalin!';
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(function() {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.5s';
+        setTimeout(function() {
+            document.body.removeChild(toast);
+        }, 500);
+    }, 2000);
+}
+</script>
+
+ <!-- Comment Form MOVED HERE -->
+ <div class="card comment-form-card">
+    <div class="card-body p-4">
+        <h3 class="h5 comment-form-title">Tinggalkan Komentar</h3>
+        <form class="comment-form">
+            <div class="row g-3">
+                <div class="col-sm-6 mb-2">
+                    <label for="name" class="form-label">Nama*</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nama Anda" required>
+                </div>
+                <div class="col-sm-6 mb-2">
+                    <label for="email" class="form-label">Email*</label>
+                    <input type="email" class="form-control" id="email" placeholder="email@contoh.com" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="website" class="form-label">Website</label>
+                <input type="url" class="form-control" id="website" placeholder="https://website-anda.com">
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Komentar*</label>
+                <textarea class="form-control" id="comment" rows="4" placeholder="Bagikan pendapat Anda..." required></textarea>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="saveInfo">
+                <label class="form-check-label" for="saveInfo">Simpan data saya untuk komentar berikutnya</label>
+            </div>
+            <button type="submit" class="btn btn-submit">Kirim <i class="fas fa-paper-plane ms-1"></i></button>
+        </form>
+    </div>
+</div>
+</div>
